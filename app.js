@@ -28,3 +28,50 @@ app.get("/", (req, res) => {
     // LA RISPOSTA (RES) PREVEDE UN METODO CHE SI CHIAMA SEND NEL QUALE POSSO INVIARE UNA STRINGA
     res.send("Server del mio blog");
 });
+
+// Definisco la rotta /bacheca
+app.get("/bacheca", (req, res) => {
+    // Creo array con almeno 5 post, per ognuno indico titolo, contenuto, immagine e tags
+    const posts = [
+        {
+            "titolo": "ciambellone",
+            "contenuto": "La ciambella ideale",
+            "immagine": "http://localhost:3000/imgs/ciambellone.jpeg",
+            "tags": ["uova", "farina", "colazione"],
+        },
+        {
+            "titolo": "cracker_barbabietola",
+            "contenuto": "Il cracker salutare",
+            "immagine": "http://localhost:3000/imgs/cracker_barbabietola.jpeg",
+            "tags": ["barbabietola", "cracker", "snack"],
+        },
+        {
+            "titolo": "pane_fritto_dolce",
+            "contenuto": "Il pane fritto",
+            "immagine": "http://localhost:3000/imgs/pane_fritto_dolce.jpeg",
+            "tags": ["lievito", "farina", "pane"],
+        },
+        {
+            "titolo": "pasta_barbabietola",
+            "contenuto": "La pasta viola",
+            "immagine": "http://localhost:3000/imgs/pasta_barbabietola.jpeg",
+            "tags": ["grano", "pasta", "primo"],
+        },
+        {
+            "titolo": "torta_paesana",
+            "contenuto": "La torta come una volta",
+            "immagine": "http://localhost:3000/imgs/torta_paesana.jpeg",
+            "tags": ["cioccolato", "pinoli", "dessert"],
+        },
+    ];
+
+    // Ritorno l'array di post in formato Json
+    res.json(posts);
+});
+
+// Avvio il server, mettendolo in ascolto sulla porta indicata
+// Lo metto in ascolto di qualsiasi richiesta arrivi sulla porta fissata e quando parte il server scrive in console la cosa indicata tra backtick, così sono a conoscenza che è partito questo server e le cose stanno funzionando
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
+  
